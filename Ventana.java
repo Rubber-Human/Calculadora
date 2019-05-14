@@ -10,6 +10,8 @@ public class Ventana extends JFrame  implements ActionListener{
     Font fuente1, fuente2;
     GridLayout GL = new GridLayout();
     GridLayout GL2 = new GridLayout();
+    String numero1 = "0", numero2 = "0", operacion = "";
+    double resultado = 0.0;
 
     public Ventana(){
         fuente1 = new Font("Segoe UI",1,22);
@@ -72,7 +74,7 @@ public class Ventana extends JFrame  implements ActionListener{
         punto.addActionListener(this);
         bot_blanco = new JButton("");
 
-        //PANEL 1 QUE INCLUYE LA PANTALLA
+        //PANEL 1 QUE INCLUYE LA PANTALLA Y LAS OPERACIONES REALIZADAS
         pantalla.setBounds(40,30,420,80);
         pantalla.setHorizontalAlignment(JTextField.RIGHT);
         pantalla.setFont(fuente1);
@@ -82,132 +84,111 @@ public class Ventana extends JFrame  implements ActionListener{
         //PANEL 2 QUE INCLUYE LOS BOTONES
         sum.setFont(fuente2);
         sum.setVerticalAlignment(JTextField.CENTER);
-        sum.setBorder(null);
         sum.setBackground(Color.LIGHT_GRAY);
         sum.setForeground(Color.black);
 
         
         res.setFont(fuente2);
         res.setVerticalAlignment(JTextField.CENTER);
-        res.setBorder(null);
         res.setBackground(Color.LIGHT_GRAY);
         res.setForeground(Color.black);
 
 
         mul.setFont(fuente2);
         mul.setVerticalAlignment(JTextField.CENTER);
-        mul.setBorder(null);
         mul.setBackground(Color.LIGHT_GRAY);
         mul.setForeground(Color.black);
 
 
         div.setFont(fuente2);
         div.setVerticalAlignment(JTextField.CENTER);
-        div.setBorder(null);
         div.setBackground(Color.LIGHT_GRAY);
         div.setForeground(Color.black);
 
 
         num7.setFont(fuente2);
         num7.setVerticalAlignment(JTextField.CENTER);
-        num7.setBorder(null);
         num7.setBackground(Color.LIGHT_GRAY);
         num7.setForeground(Color.black);
 
 
         num8.setFont(fuente2);
         num8.setVerticalAlignment(JTextField.CENTER);
-        num8.setBorder(null);
         num8.setBackground(Color.LIGHT_GRAY);
         num8.setForeground(Color.black);
 
 
         num9.setFont(fuente2);
         num9.setVerticalAlignment(JTextField.CENTER);
-        num9.setBorder(null);
         num9.setBackground(Color.LIGHT_GRAY);
         num9.setForeground(Color.black);
 
 
         botCE.setFont(fuente2);
         botCE.setVerticalAlignment(JTextField.CENTER);
-        botCE.setBorder(null);
         botCE.setBackground(Color.LIGHT_GRAY);
         botCE.setForeground(Color.black);
 
 
         num4.setFont(fuente2);
         num4.setVerticalAlignment(JTextField.CENTER);
-        num4.setBorder(null);
         num4.setBackground(Color.LIGHT_GRAY);
         num4.setForeground(Color.black);
 
 
         num5.setFont(fuente2);
         num5.setVerticalAlignment(JTextField.CENTER);
-        num5.setBorder(null);
         num5.setBackground(Color.LIGHT_GRAY);
         num5.setForeground(Color.black);
 
 
         num6.setFont(fuente2);
         num6.setVerticalAlignment(JTextField.CENTER);
-        num6.setBorder(null);
         num6.setBackground(Color.LIGHT_GRAY);
         num6.setForeground(Color.black);
 
 
         botC.setFont(fuente2);
         botC.setVerticalAlignment(JTextField.CENTER);
-        botC.setBorder(null);
         botC.setBackground(Color.LIGHT_GRAY);
         botC.setForeground(Color.black);
 
 
         num1.setFont(fuente2);
         num1.setVerticalAlignment(JTextField.CENTER);
-        num1.setBorder(null);
         num1.setBackground(Color.LIGHT_GRAY);
         num1.setForeground(Color.black);
 
 
         num2.setFont(fuente2);
         num2.setVerticalAlignment(JTextField.CENTER);
-        num2.setBorder(null);
         num2.setBackground(Color.LIGHT_GRAY);
         num2.setForeground(Color.black);
 
 
         num3.setFont(fuente2);
         num3.setVerticalAlignment(JTextField.CENTER);
-        num3.setBorder(null);
         num3.setBackground(Color.LIGHT_GRAY);
         num3.setForeground(Color.black);
 
 
         bot_igual.setFont(fuente2);
         bot_igual.setVerticalAlignment(JTextField.CENTER);
-        bot_igual.setBorder(null);
         bot_igual.setBackground(Color.LIGHT_GRAY);
         bot_igual.setForeground(Color.black);
 
-        bot_blanco.setBorder(null);
         bot_blanco.setBackground(new Color(238,238,238));
         bot_blanco.setEnabled(false);
 
         num0.setFont(fuente2);
         num0.setVerticalAlignment(JTextField.CENTER);
-        num0.setBorder(null);
         num0.setBackground(Color.LIGHT_GRAY);
         num0.setForeground(Color.black);
 
-
         punto.setFont(fuente2);
         punto.setVerticalAlignment(JTextField.CENTER);
-        punto.setBorder(null);
         punto.setBackground(Color.LIGHT_GRAY);
         punto.setForeground(Color.black);
-
 
 
         panel2.add(sum);
@@ -240,8 +221,6 @@ public class Ventana extends JFrame  implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String numero1 = "0", numero2 = "0", operacion = "";
-        double resultado = 3.0;
 
         if(num0.equals(e.getSource())){
             pantalla.setText(pantalla.getText() + "0");
@@ -317,29 +296,54 @@ public class Ventana extends JFrame  implements ActionListener{
             numero1 = pantalla.getText();
             operacion = "+";
             pantalla.setText("");
+            punto.setEnabled(true);
+        }
+
+        if(res.equals(e.getSource())){
+            numero1 = pantalla.getText();
+            operacion = "-";
+            pantalla.setText("");
+            punto.setEnabled(true);
+        }
+
+        if(mul.equals(e.getSource())){
+            numero1 = pantalla.getText();
+            operacion = "*";
+            pantalla.setText("");
+            punto.setEnabled(true);
+        }
+
+        if(div.equals(e.getSource())){
+            numero1 = pantalla.getText();
+            operacion = "/";
+            pantalla.setText("");
+            punto.setEnabled(true);
         }
 
         if(bot_igual.equals(e.getSource())){
             numero2 = pantalla.getText();
+            punto.setEnabled(false);
+
             if(operacion.equals("+")){
                 resultado = Double.parseDouble(numero1) + Double.parseDouble(numero2);
+                pantalla.setText(""+resultado);
             }
-            pantalla.setText("" + resultado);
-        }
-
-       /* if(res.equals(e.getSource())){
-
-        }
-        if(mul.equals(e.getSource())){
-
-        }
-        if(div.equals(e.getSource())){
-            if(numero2 == 0){
-                pantalla.setText("No se puede dividir entre cero");
+            if(operacion.equals("-")){
+                resultado = Double.parseDouble(numero1) - Double.parseDouble(numero2);
+                pantalla.setText(""+resultado);
             }
-            else {
-               pantalla.setText("" + division);
+            if(operacion.equals("*")){
+                resultado = Double.parseDouble(numero1) * Double.parseDouble(numero2);
+                pantalla.setText(""+resultado);
             }
-        }*/
+            if(operacion.equals("/")) {
+                if (numero2.equals("0")) {
+                    pantalla.setText("No se puede dividir entre cero");
+                } else {
+                    resultado = Double.parseDouble(numero1) / Double.parseDouble(numero2);
+                    pantalla.setText(""+resultado);
+                }
+            }
+        }
     }
 }
